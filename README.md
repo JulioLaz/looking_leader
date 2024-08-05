@@ -2,6 +2,12 @@
 
 Este proyecto utiliza Streamlit y Plotly para visualizar y analizar datos de evaluación de candidatos para posiciones de liderazgo en Data Science.
 
+# App
+https://looking-leader.streamlit.app/
+
+# Formulario para datos:
+https://docs.google.com/spreadsheets/d/1xoqR5jZa99UmIZ1nQxb7T_t29bsEO35F08yIinl-4Xo/edit?usp=sharing
+
 ## Características
 
 - Visualización de datos mediante gráficos interactivos
