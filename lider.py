@@ -4,6 +4,7 @@ import plotly.express as px
 import graf_02 as g2
 import graf_01 as g1
 import graf_bar_pie as bp
+
 st.set_page_config(page_title="Leadership Dashboard", page_icon="📊", layout="wide")
 df = data.feature()
 grupo=1
