@@ -99,23 +99,6 @@ def comment_00(df):
     df.set_index('Nombre', inplace=True)
     st.dataframe(df)
 
-# def comment_01():
-#     st.markdown("""
-#     Este gráfico muestra la evaluación de candidatos para liderazgo en Data Science:
-
-#     - **Eje X**: Promedio de Habilidades Técnicas
-#     - **Eje Y**: Promedio de Habilidades Blandas
-#     - **Tamaño de los puntos**: Experiencia total (Data Science + Liderazgo de grupos)
-#     - **Color de los puntos**: Puntaje de Liderazgo
-
-#     Los cuadrantes representan:
-#     - **Rojo**: Bajo rendimiento
-#     - **Marrón (izquierda)**: Fuertes en habilidades blandas
-#     - **Marrón (derecha)**: Fuertes en habilidades técnicas
-#     - **Celeste**: Alto rendimiento
-
-#     Pase el cursor sobre los puntos para ver más detalles de cada candidato.
-#     """)
 
 def comment_01():
     st.markdown("""

@@ -8,8 +8,6 @@ import forms
 icon = Image.open("leader.png")
 
 st.set_page_config(page_title="Leadership Dashboard", page_icon=icon, layout="wide")
-# st.set_page_config(page_title="Leadership Dashboard", page_icon="📊", layout="wide")
-
 
 df = data.feature()
 
@@ -33,7 +31,7 @@ if not st.session_state.authenticated:
         if check_credentials(nombre, grupo):
             st.session_state.authenticated = True
             st.session_state.group = grupo
-            st.experimental_rerun()
+            st.rerun()
         else:
             st.error("Nombre o grupo incorrecto. Por favor, verifica tus datos e intenta de nuevo.")
     forms.forms()            

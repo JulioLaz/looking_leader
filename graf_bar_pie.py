@@ -82,7 +82,8 @@ def grafica_pie(df, grupo):
          'xanchor': 'center'
             },
          showlegend=False,
-         height=height,
+         height=530,
+         # height=height,
          paper_bgcolor='black',
          plot_bgcolor='black', 
     )
