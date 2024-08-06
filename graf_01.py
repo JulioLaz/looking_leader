@@ -124,7 +124,7 @@ def comment_01():
                 text-align: center;}
         .tabla {
             width: 100% !important;
-            max-width: 800px;
+            max-width: 600px;
             # margin: auto;
             margin-left:10px!important;
                 
