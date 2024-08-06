@@ -1,9 +1,16 @@
+from PIL import Image
 import streamlit as st
 import data
 import graf_01 as g1
 import graf_bar_pie as bp
 import forms
-st.set_page_config(page_title="Leadership Dashboard", page_icon="📊", layout="wide")
+
+icon = Image.open("leader.png")
+
+st.set_page_config(page_title="Leadership Dashboard", page_icon=icon, layout="wide")
+# st.set_page_config(page_title="Leadership Dashboard", page_icon="📊", layout="wide")
+
+
 df = data.feature()
 
 if 'authenticated' not in st.session_state:
@@ -30,7 +37,6 @@ if not st.session_state.authenticated:
         else:
             st.error("Nombre o grupo incorrecto. Por favor, verifica tus datos e intenta de nuevo.")
     forms.forms()            
-   #  https://docs.google.com/forms/d/e/1FAIpQLSdW37CVsihwoAQKNtrEmAiczfjGPEV_rqHVZ4t5WruJXJ7lPQ/viewform?usp=sf_link
 
 if st.session_state.authenticated:
    df_filtered = df[df['Grupo'] == st.session_state.group]
@@ -72,11 +78,11 @@ if st.session_state.authenticated:
    with col1:
       g1.graficas(df,grupo)
    with col2:
-      tab1, tab2 = st.tabs(["Puntuación", "Distribución puntos"])
+      tab1, tab2 = st.tabs(["Distribución puntos","Puntuación"])
       with tab1: 
-         bp.grafica_bar_00(df,grupo)
-      with tab2:
          bp.grafica_pie(df,grupo)
+      with tab2:
+         bp.grafica_bar_00(df,grupo)
 
    g1.comment_01()
    g1.comment_00(df)

@@ -51,7 +51,7 @@ def graficas(df,grupo):
 
     fig.update_layout(
     title={
-        'text': f"Puntajes de Liderazgo",
+        'text': f"Analizando Liderazgo",
         'font': {'size': 22, 'color': 'skyblue', 'family': 'Arial, sans-serif'},
         'x': 0.5,  # Centrar el título
         'xanchor': 'center'
