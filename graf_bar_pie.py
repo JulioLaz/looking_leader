@@ -2,6 +2,7 @@ import streamlit as st
 import plotly.express as px
 import plotly.graph_objects as go
 
+height= 450
 def grafica_bar_00(df, grupo):
     df = df.sort_values('Puntaje_Liderazgo', ascending=True)
     df = df[df['Grupo'] == grupo]
@@ -23,10 +24,7 @@ def grafica_bar_00(df, grupo):
             textposition='inside',
             insidetextanchor='middle',
             textfont=dict(size=14, family='Arial Black'),
-            # width=0.7,  # Esto hará que las barras ocupen el 80% del espacio disponible
-
-        )
-    )
+        ))
 
     fig.update_layout(
          title={
@@ -36,14 +34,11 @@ def grafica_bar_00(df, grupo):
          'xanchor': 'center'
             },
          showlegend=False,
-         height=500,
+         height=height,
          paper_bgcolor='black',
          plot_bgcolor='black',
          bargap=0.2,
-         margin=dict(l=10, r=10, t=50, b=10),
-
-
-    )
+         margin=dict(l=10, r=10, t=50, b=10))
 
     fig.update_xaxes(showticklabels=False)
     fig.update_yaxes(showticklabels=True, tickfont=dict(size=12, family='Arial Black'), showgrid=False)
@@ -87,7 +82,7 @@ def grafica_pie(df, grupo):
          'xanchor': 'center'
             },
          showlegend=False,
-         height=500,
+         height=height,
          paper_bgcolor='black',
          plot_bgcolor='black', 
     )

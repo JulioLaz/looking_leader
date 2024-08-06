@@ -65,7 +65,7 @@ def graficas(df,grupo):
         'font': {'size': 18, 'color': 'lime', 'family': 'Arial, sans-serif'}
     },
     showlegend=False,
-    width=600, 
+    # width=600, 
     height=600, 
     paper_bgcolor='black',  # Fondo del gráfico
     plot_bgcolor='black',  # Fondo del área de trazado
@@ -85,26 +85,102 @@ def graficas(df,grupo):
 
     st.plotly_chart(fig, use_container_width=True)
 
-def comment(df):
+    # st.subheader("Datos:")
+def comment_00(df):
     columnas=['Nombre','Promedio_Tecnicas','Promedio_Blandas','Puntaje_Liderazgo']
 
-    # Display raw data
-    st.subheader("Datos Brutos")
-    st.dataframe(df[columnas])
+    st.markdown('''<style>
+                #root > div:nth-child(1) > div.withScreencast > div > div > div > section > div.block-container.st-emotion-cache-1jicfl2.ea3mdgi5 > div > div > div > div:nth-child(7) > div{
+                display: flex;
+                justify-content:center;
+                margin:10px 0;
+                } </style>''', unsafe_allow_html=True)
+    df=df[columnas]
+    df.set_index('Nombre', inplace=True)
+    st.dataframe(df)
 
+# def comment_01():
+#     st.markdown("""
+#     Este gráfico muestra la evaluación de candidatos para liderazgo en Data Science:
+
+#     - **Eje X**: Promedio de Habilidades Técnicas
+#     - **Eje Y**: Promedio de Habilidades Blandas
+#     - **Tamaño de los puntos**: Experiencia total (Data Science + Liderazgo de grupos)
+#     - **Color de los puntos**: Puntaje de Liderazgo
+
+#     Los cuadrantes representan:
+#     - **Rojo**: Bajo rendimiento
+#     - **Marrón (izquierda)**: Fuertes en habilidades blandas
+#     - **Marrón (derecha)**: Fuertes en habilidades técnicas
+#     - **Celeste**: Alto rendimiento
+
+#     Pase el cursor sobre los puntos para ver más detalles de cada candidato.
+#     """)
+
+def comment_01():
     st.markdown("""
-    Este gráfico muestra la evaluación de candidatos para liderazgo en Data Science:
+                        <style>
+        td{
+                text-align: center;}
+        .tabla {
+            width: 100% !important;
+            max-width: 800px;
+            # margin: auto;
+            margin-left:10px!important;
+                
+        }
+        @media (max-width: 600px) {
+            .tabla {
+                height: 400px !important;
+                margin:10px !important;
+            }
+        }
+        </style>
 
-    - **Eje X**: Promedio de Habilidades Técnicas
-    - **Eje Y**: Promedio de Habilidades Blandas
-    - **Tamaño de los puntos**: Experiencia total (Data Science + Liderazgo de grupos)
-    - **Color de los puntos**: Puntaje de Liderazgo
 
-    Los cuadrantes representan:
-    - **Rojo**: Bajo rendimiento
-    - **Marrón (izquierda)**: Fuertes en habilidades blandas
-    - **Marrón (derecha)**: Fuertes en habilidades técnicas
-    - **Celeste**: Alto rendimiento
+    <h4 style='display: flex; justify-content: center;'>Explicación de gráfica scatter</h4>
+    <div style='display: flex;flex-direction: row; flex-wrap: wrap; align-items: center; justify-content: center;'>
+    <table class='tabla' style="width:20vw; border-collapse: collapse;">
+      <tr style="background-color: #f2f2f2;">
+        <th style="font-size:1.3rem; border: 1px solid #ddd; padding: 8px; text-align: center;color:#000">Detalles del Gráfico</th>
+      </tr>
+      <tr>
+         <td style="border: 1px solid #ddd; padding: 8px;"><strong>Eje X</strong>: Promedio de Habilidades Técnicas</td>
+      </tr>
+      <tr>
+        <td style="border: 1px solid #ddd; padding: 8px;"><strong>Eje Y</strong>: Promedio de Habilidades Blandas</td>
+      </tr>
+      <tr>
+        <td style="border: 1px solid #ddd; padding: 8px;"><strong>Tamaño de los puntos</strong>: Experiencia total</td>
+      </tr>
+      <tr>
+        <td style="border: 1px solid #ddd; padding: 8px;"><strong>Color de los puntos</strong>: Puntaje de Liderazgo</td>
+      </tr>
+    </table>
+                
+    <table class='tabla' style="width:50vw; border-collapse: collapse; margin-left: 10px;">
+      <tr style="background-color: #f2f2f2;">
+        <th style="font-size:1.3rem; border: 1px solid #ddd; padding: 8px; text-align: center;color:#000">Cuadrante</th>
+        <th style="font-size:1.3rem; border: 1px solid #ddd; padding: 8px; text-align: center;color:#000">Descripción</th>
+      </tr>
+      <tr>
+        <td style="border: 1px solid #ddd; padding: 8px;">Rojo</td>
+        <td style="border: 1px solid #ddd; padding: 8px;">Bajo rendimiento</td>
+      </tr>
+      <tr>
+        <td style="border: 1px solid #ddd; padding: 8px;">Marrón (izquierda)</td>
+        <td style="border: 1px solid #ddd; padding: 8px;">Fuertes en habilidades blandas</td>
+      </tr>
+      <tr>
+        <td style="border: 1px solid #ddd; padding: 8px;">Marrón (derecha)</td>
+        <td style="border: 1px solid #ddd; padding: 8px;">Fuertes en habilidades técnicas</td>
+      </tr>
+      <tr>
+        <td style="border: 1px solid #ddd; padding: 8px;">Celeste</td>
+        <td style="border: 1px solid #ddd; padding: 8px;">Alto rendimiento</td>
+      </tr>
+    </table>
+    <br>
+   </div>
+    """, unsafe_allow_html=True)
 
-    Pase el cursor sobre los puntos para ver más detalles de cada candidato.
-    """)
