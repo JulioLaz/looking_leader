@@ -6,8 +6,7 @@ Este proyecto utiliza Streamlit y Plotly para visualizar y analizar datos de eva
 https://looking-leader.streamlit.app/
 
 # Formulario para datos:
-https://docs.google.com/spreadsheets/d/1xoqR5jZa99UmIZ1nQxb7T_t29bsEO35F08yIinl-4Xo/edit?usp=sharing
-
+https://docs.google.com/forms/d/e/1FAIpQLSdW37CVsihwoAQKNtrEmAiczfjGPEV_rqHVZ4t5WruJXJ7lPQ/viewform?usp=sf_link
 ## Características
 
 - Visualización de datos mediante gráficos interactivos
