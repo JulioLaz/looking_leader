@@ -21,54 +21,6 @@ def check_credentials(nombre, grupo):
     user_data = df[(df['Nombre'] == nombre) & (df['Grupo'] == grupo)]
     return not user_data.empty
 
-# if not st.session_state.authenticated:
-#     st.title("Bienvenido al clasificador de liderazgo")
-    
-#     nombre = st.text_input("Ingresa tu nombre:", type="default")
-#     grupo = st.selectbox("Selecciona tu grupo:", df['Grupo'].unique())
-
-######################3
-######################3
-# if not st.session_state.authenticated:
-#     st.title("Bienvenido al clasificador de liderazgo")
-    
-#     # Usar columnas para colocar los elementos lado a lado
-#     col1, col2, col3 = st.columns(3)
-    
-#     with col1:
-#         nombre = st.text_input("Ingresa tu nombre:", type="default")
-    
-#     with col2:
-#         grupo = st.selectbox("Selecciona tu grupo:", df['Grupo'].unique())
-    
-#     # Estilo personalizado para alinear los elementos y ajustar el ancho
-#     st.markdown("""
-#     <style>
-#     .stColumns {
-#         display: flex;
-#         flex-direction: row;
-#         justify-content: space-between;
-#         align-items: flex-end;
-#     }
-#     .stColumn {
-#         width: 10rem;
-#         padding: 0 10px;
-#     }
-#     </style>
-#     """, unsafe_allow_html=True)
-    
-#     with col3:
-#         if st.button("Acceder"):
-#             if check_credentials(nombre, grupo):
-#                 st.session_state.authenticated = True
-#                 st.session_state.group = grupo
-#                 st.rerun()
-#             else:
-#                 st.error("Nombre o grupo incorrecto. Por favor, verifica tus datos e intenta de nuevo.")
-
-######################3
-######################3
-
 if not st.session_state.authenticated:
     st.markdown(f"<h1 style='text-align: center;'>Bienvenido al clasificador de liderazgo</h1>", unsafe_allow_html=True)
     nombre = st.text_input("Ingresa tu nombre:", type="default")
@@ -93,9 +45,9 @@ if not st.session_state.authenticated:
         border-radius: 5px;
         font-size: 16px;
     }
-    .stSelectbox > div > div > div {
-        width: 20rem;
-    }
+    .stRadio > div > div > div {
+            display:flex !important;
+            justify-content: center !important}
     .stButton > button {
         width: 20rem;
         padding: 10px;
@@ -113,11 +65,15 @@ if not st.session_state.authenticated:
         background-color: #45a049;
     }
                 
+#root > div:nth-child(1) > div.withScreencast > div > div > div > section > div.block-container.st-emotion-cache-1jicfl2.ea3mdgi5 > div > div > div > div:nth-child(5) > div > div{
+            display:flex !important;
+            justify-content: center !important}    
     </style>
     ''', unsafe_allow_html=True)    
    #  with col2:
-    grupo = st.selectbox("Selecciona tu grupo:", df['Grupo'].unique())
-    
+    grupo = st.radio("Selecciona tu grupo:", df['Grupo'].unique(), horizontal=True)
+   #  grupo = st.selectbox("Selecciona tu grupo:", df['Grupo'].unique())
+   #  .radio("", options=years[:], index=0, key="year_radio", horizontal=True
     # Estilo personalizado para alinear los elementos
     st.markdown("""
     <style>
