@@ -5,16 +5,26 @@ import graf_01 as g1
 import graf_bar_pie as bp
 import forms
 import styles
+
 icon = Image.open("leader.png")
 
 st.set_page_config(page_title="Leadership Dashboard", page_icon=icon, layout="wide")
 
 df = data.feature()
 
+# if 'authenticated' not in st.session_state:
+#     st.session_state.authenticated = False
+# if 'group' not in st.session_state:
+#     st.session_state.group = None
+# Initialize session state variables
 if 'authenticated' not in st.session_state:
     st.session_state.authenticated = False
 if 'group' not in st.session_state:
     st.session_state.group = None
+if 'nombre' not in st.session_state:
+    st.session_state.nombre = ""
+if 'selected_group' not in st.session_state:
+    st.session_state.selected_group = None
 
 def check_credentials(nombre, grupo):
     user_data = df[(df['Nombre'] == nombre) & (df['Grupo'] == grupo)]
@@ -22,7 +32,8 @@ def check_credentials(nombre, grupo):
 
 if not st.session_state.authenticated:
     st.markdown(f"<h1 style='text-align: center;'>Bienvenido al clasificador de liderazgo</h1>", unsafe_allow_html=True)
-    nombre = st.text_input("Ingresa tu nombre:", type="default")
+   #  nombre = st.text_input("Ingresa tu nombre:", type="default")
+    st.session_state.nombre = st.text_input("Ingresa tu nombre:", value=st.session_state.nombre)
 
     st.markdown('''
     <style>
@@ -71,7 +82,8 @@ if not st.session_state.authenticated:
     </style>
     ''', unsafe_allow_html=True)    
 
-    grupo = st.radio("Selecciona tu grupo:", df['Grupo'].sort_values(ascending=True).unique(), horizontal=True)
+   #  grupo = st.radio("Selecciona tu grupo:", df['Grupo'].sort_values(ascending=True).unique(), horizontal=True)
+    st.session_state.selected_group = st.radio("Selecciona tu grupo:", df['Grupo'].sort_values(ascending=True).unique(), index=0 if st.session_state.selected_group is None else list(df['Grupo'].sort_values(ascending=True).unique()).index(st.session_state.selected_group), horizontal=True)
 
     st.markdown("""
     <style>
@@ -92,9 +104,12 @@ if not st.session_state.authenticated:
     """, unsafe_allow_html=True)
 
     if st.button("Acceder"):
-        if check_credentials(nombre, grupo):
+        if check_credentials(st.session_state.nombre, st.session_state.selected_group):
+      #   if check_credentials(nombre, grupo):
             st.session_state.authenticated = True
-            st.session_state.group = grupo
+            # st.session_state.group = grupo
+            st.session_state.group = st.session_state.selected_group
+
             st.rerun()
         else:
             st.error(f"Nombre o grupo incorrecto.\nPor favor, verifica tus datos e intenta de nuevo.")
@@ -103,7 +118,9 @@ if not st.session_state.authenticated:
     forms.forms()            
 
 if st.session_state.authenticated:
+   # df_filtered = df[df['Grupo'] == st.session_state.group]
    df_filtered = df[df['Grupo'] == st.session_state.group]
+
    grupo = int(df_filtered.Grupo.unique()[0])
 
    columnas=['Nombre','Promedio_Tecnicas','Promedio_Blandas','Experiencia  [En Data Science]','Experiencia  [En liderar grupos]','Puntaje_Liderazgo','Grupo']
