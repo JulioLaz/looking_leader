@@ -29,7 +29,7 @@ def grafica_bar_00(df, grupo):
     fig.update_layout(
          title={
          'text': f"Puntajes de Liderazgo",
-         'font': {'size': 18, 'color': 'skyblue', 'family': 'Arial, sans-serif'},
+         'font': {'size': 18, 'color': '#00ffff', 'family': 'Arial, sans-serif'},
          'x': 0.5,  # Centrar el título
          'xanchor': 'center'
             },
@@ -47,17 +47,11 @@ def grafica_bar_00(df, grupo):
 def grafica_pie(df, grupo):
     df = df.sort_values('Puntaje_Liderazgo', ascending=True)
     df = df[df['Grupo'] == grupo]
-
-    # Normalizar los colores en función del rango de valores
     norm = (df['Puntaje_Liderazgo'] - df['Puntaje_Liderazgo'].min()) / (df['Puntaje_Liderazgo'].max() - df['Puntaje_Liderazgo'].min())
     colors = [px.colors.sequential.Viridis_r[int(i * (len(px.colors.sequential.Inferno_r) - 1))] for i in norm]
-
-    # Destacar el mayor valor en la gráfica de pastel
     max_value_index = df['Puntaje_Liderazgo'].idxmax()
     pull_values = [0.1 if i == max_value_index else 0 for i in df.index]
-
     fig = go.Figure()
-
     fig.add_trace(
         go.Pie(
             labels=df['Nombre'],
@@ -77,7 +71,7 @@ def grafica_pie(df, grupo):
     fig.update_layout(
          title={
          'text': f"Distribución de Liderazgo",
-         'font': {'size': 18, 'color': 'skyblue', 'family': 'Arial, sans-serif'},
+         'font': {'size': 18, 'color': '#00ffff', 'family': 'Arial, sans-serif'},
          'x': 0.5,  # Centrar el título
          'xanchor': 'center'
             },
@@ -90,71 +84,52 @@ def grafica_pie(df, grupo):
 
     st.plotly_chart(fig, use_container_width=True)
 
-def grafica_bar(df, grupo):
-    df = df[df['Grupo'] == grupo].sort_values('Puntaje_Liderazgo', ascending=True)
+def graf_embudo(df):
+   norm = (df['Puntaje_Liderazgo'] - df['Puntaje_Liderazgo'].min()) / (df['Puntaje_Liderazgo'].max() - df['Puntaje_Liderazgo'].min())
+   colors = [px.colors.sequential.Viridis_r[int(i * (len(px.colors.sequential.Inferno_r) - 1))] for i in norm]
 
-    # Normalizar los colores en función del rango de valores
-    norm = (df['Puntaje_Liderazgo'] - df['Puntaje_Liderazgo'].min()) / (df['Puntaje_Liderazgo'].max() - df['Puntaje_Liderazgo'].min())
-    colors = [px.colors.sequential.Viridis_r[int(i * (len(px.colors.sequential.Inferno_r) - 1))] for i in norm]
+   df_sorted = df.sort_values('Puntaje_Liderazgo', ascending=False)
 
-    fig = go.Figure()
+   fig = go.Figure(go.Funnel(
+      y = df_sorted['Nombre'],
+      x = df_sorted['Puntaje_Liderazgo'],
+      textposition = "inside",
+      textinfo = "label+value+percent total",
+      # textinfo = "label+value+percent initial",
+      textfont=dict(size=12, family='Arial Black'),
 
-    fig.add_trace(
-        go.Bar(
-            y=df['Nombre'],
-            x=df['Puntaje_Liderazgo'],
-            orientation='h',
-            name='Puntuación',
-            marker_color=colors,
-            text=df['Puntaje_Liderazgo'].round(2),
-            textposition='inside',
-            insidetextanchor='end',
-            textfont=dict(size=12, family='Arial, sans-serif', color='white'),
-            width=0.8,
-        )
-    )
+      # opacity = 0.65,
+        marker = {"color": colors,
+                  "line": {"width": [1]*len(df), "color": ["white"]*len(df)}},
+      # connector = {"line": {"color": "royalblue", "dash": "solid", "width": 3}}
+   ))
 
-    fig.update_layout(
-        title={
-            'text': f"Puntajes de Liderazgo - Grupo {grupo}",
-            'font': {'size': 16, 'color': 'skyblue', 'family': 'Arial, sans-serif'},
-            'x': 0.5,
-            'xanchor': 'center'
-        },
-        showlegend=False,
-        paper_bgcolor='black',
-        plot_bgcolor='black',
-        margin=dict(l=10, r=10, t=50, b=10),
-        bargap=0.2,
-        height=500,  # Altura fija inicial
-    )
+   fig.update_layout(
+      title={
+         'text': f"Orden de Liderazgo",
+         'font': {'size': 20, 'color': '#00ffff', 'family': 'Arial, sans-serif'},
+         'x': 0.5,  # Centrar el título
+         'y':.96,
+         'xanchor': 'center'
+            },
+      # title_font=dict(size=24, color='skyblue'),
+      plot_bgcolor='black',  # Dark background
+      paper_bgcolor='black',  # Dark background
+      height=600,
+      margin=dict(l=0, r=0, t=50, b=0),
+      yaxis=dict(
+         showgrid=False,
+         showline=False,
+         showticklabels=False,
+         tickfont=dict(color='white'),
+      ),
+      xaxis=dict(
+         showgrid=False,
+         showline=False,
+         showticklabels=False,
+      ),
+      funnelmode="stack"
+   )
 
-    fig.update_xaxes(showticklabels=False, showgrid=False, zeroline=False)
-    fig.update_yaxes(
-        showticklabels=True, 
-        tickfont=dict(size=12, family='Arial, sans-serif', color='white'),
-        showgrid=False,
-        zeroline=False
-    )
-
-    # Ajuste responsivo
-    st.markdown("""
-        <style>
-        .stPlotlyChart {
-            width: 100% !important;
-            max-width: 800px;
-            margin: auto;
-                
-        }
-        @media (max-width: 600px) {
-            .stPlotlyChart {
-                height: 400px !important;
-            }
-        }
-        </style>
-        """, unsafe_allow_html=True)
-
-    # Usar el contenedor de Streamlit
-    container = st.container()
-    with container:
-        st.plotly_chart(fig, use_container_width=True, config={'displayModeBar': False, 'responsive': True})
+   # Display the chart in Streamlit
+   st.plotly_chart(fig, use_container_width=True)

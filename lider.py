@@ -17,7 +17,6 @@ if 'group' not in st.session_state:
     st.session_state.group = None
 
 def check_credentials(nombre, grupo):
-    # Verificar si el nombre existe en el DataFrame y si pertenece al grupo seleccionado
     user_data = df[(df['Nombre'] == nombre) & (df['Grupo'] == grupo)]
     return not user_data.empty
 
@@ -64,17 +63,16 @@ if not st.session_state.authenticated:
     .stButton > button:hover {
         background-color: #45a049;
     }
-                
+                /*  centrar link de forms  */
+#root > div:nth-child(1) > div.withScreencast > div > div > div > section > div.block-container.st-emotion-cache-1jicfl2.ea3mdgi5 > div > div > div > div:nth-child(10) > div > div,                
 #root > div:nth-child(1) > div.withScreencast > div > div > div > section > div.block-container.st-emotion-cache-1jicfl2.ea3mdgi5 > div > div > div > div:nth-child(5) > div > div{
             display:flex !important;
             justify-content: center !important}    
     </style>
     ''', unsafe_allow_html=True)    
-   #  with col2:
-    grupo = st.radio("Selecciona tu grupo:", df['Grupo'].unique(), horizontal=True)
-   #  grupo = st.selectbox("Selecciona tu grupo:", df['Grupo'].unique())
-   #  .radio("", options=years[:], index=0, key="year_radio", horizontal=True
-    # Estilo personalizado para alinear los elementos
+
+    grupo = st.radio("Selecciona tu grupo:", df['Grupo'].sort_values(ascending=True).unique(), horizontal=True)
+
     st.markdown("""
     <style>
     .stColumns {
@@ -86,6 +84,10 @@ if not st.session_state.authenticated:
     .stColumn {
         width: 48%;  /* Ajusta este valor según sea necesario */
     }
+                /* centrar txt del error  */ 
+    #root > div:nth-child(1) > div.withScreencast > div > div > div > section > div.block-container.st-emotion-cache-1jicfl2.ea3mdgi5 > div > div > div > div:nth-child(8) > div > div > div > div > div > div > p{
+    text-align: center !important;
+                }
     </style>
     """, unsafe_allow_html=True)
 
@@ -97,14 +99,6 @@ if not st.session_state.authenticated:
         else:
             st.error(f"Nombre o grupo incorrecto.\nPor favor, verifica tus datos e intenta de nuevo.")
 
-   #  st.markdown("""
-   #  <style>
-   #  #root > div:nth-child(1) > div.withScreencast > div > div > div > section > div.block-container.st-emotion-cache-1jicfl2.ea3mdgi5 > div > div > div > div:nth-child(8) > div {
-   #      width: 20rem !important;
-   #      display:flex !important;
-   #      justify-content: center;}
-   #  </style>
-   #  """, unsafe_allow_html=True)
     styles.style_gen()           
     forms.forms()            
 
@@ -124,6 +118,7 @@ if st.session_state.authenticated:
    st.markdown(f"<h1 style='text-align: center;'>Grupo {grupo} - Evaluación de Candidatos para Liderazgo en Data Science</h1>", unsafe_allow_html=True)
 
    st.markdown('''<style>
+   /* bordes de graf scatter pie & bar */            
    #root > div:nth-child(1) > div.withScreencast > div > div > div > section > div.block-container.st-emotion-cache-1jicfl2.ea3mdgi5 > div > div > div > div.st-emotion-cache-ocqkz7.e1f1d6gn5 > div:nth-child(2),
    #root > div:nth-child(1) > div.withScreencast > div > div > div > section > div.block-container.st-emotion-cache-1jicfl2.ea3mdgi5 > div > div > div > div.st-emotion-cache-ocqkz7.e1f1d6gn5 > div:nth-child(1) > div > div > div > div > div > div > div > div > svg:nth-child(1){
          border: 1px solid #00ff00;
@@ -133,10 +128,17 @@ if st.session_state.authenticated:
          font-size:10px !important;
          background-color:black;
    }            
+   /* bordes de graf embudo */            
+   #root > div:nth-child(1) > div.withScreencast > div > div > div > section > div.block-container.st-emotion-cache-1jicfl2.ea3mdgi5 > div > div > div > div:nth-child(5) > div > div > div > div > svg:nth-child(5){
+         border: 1px solid #00ff00;
+         border-radius: 5px;
+         padding: 5px;
+   }            
    #tabs-bui3-tabpanel-0 > div > div > div > div > div > div > div > div > svg:nth-child(1){
          padding:0 20px;
                }
 
+   #root > div:nth-child(1) > div.withScreencast > div > div > div > section > div.block-container.st-emotion-cache-1jicfl2.ea3mdgi5 > div > div > div > div:nth-child(8),
    #root > div:nth-child(1) > div.withScreencast > div > div > div > section > div.block-container.st-emotion-cache-1jicfl2.ea3mdgi5 > div > div > div > div.st-emotion-cache-ocqkz7.e1f1d6gn5 > div:nth-child(2) > div > div > div > div > div > div:nth-child(1) > div{
                display: flex;
                justify-content: center;
@@ -154,5 +156,6 @@ if st.session_state.authenticated:
       with tab2:
          bp.grafica_bar_00(df,grupo)
 
+   bp.graf_embudo(df)
    g1.comment_01()
    g1.comment_00(df)
