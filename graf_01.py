@@ -124,10 +124,10 @@ def description():
                 }                
         td{
                 text-align: center;
-                font-size:1rem;
                 border: 1px solid white !important;
                 padding: 5px 0px !important;
                 font-size: calc(8px + .5vw);
+                color: #fff;
                 }
 
         .tabla {
