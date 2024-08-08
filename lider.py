@@ -22,6 +22,7 @@ if 'selected_group' not in st.session_state:
     st.session_state.selected_group = None
 
 def check_credentials(nombre, grupo):
+   #  nombre = nombre.lower()
     user_data = df[(df['Nombre'] == nombre) & (df['Grupo'] == grupo)]
     return not user_data.empty
 

@@ -61,7 +61,8 @@ def feature():
     df['Puntaje_Liderazgo'] = (df['Experiencia  [En liderar grupos]'] * 0.2 +
                                df['Promedio_Tecnicas'] * 0.6 +
                                df['Promedio_Blandas'] * 0.2)
-
+    df['Nombre'] = df['Nombre'].str.strip()
+    # df['Nombre'] = df['Nombre'].str.lower()
     df.sort_values('Grupo', ascending=False, inplace=True)
     df.reset_index(drop=True, inplace=True)
     
