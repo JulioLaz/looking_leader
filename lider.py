@@ -129,7 +129,7 @@ if st.session_state.authenticated:
    #root > div:nth-child(1) > div.withScreencast > div > div > div > section > div.block-container.st-emotion-cache-1jicfl2.ea3mdgi5 > div > div > div > div.st-emotion-cache-ocqkz7.e1f1d6gn5 > div:nth-child(1) > div > div > div > div > div > div > div > div > svg:nth-child(1){
          border: 1px solid #00ff00;
          border-radius: 5px;
-         padding: 3px;
+         padding: 0 0 10px 0;
          text-align: center !important;
          font-size:10px !important;
          background-color:black;
