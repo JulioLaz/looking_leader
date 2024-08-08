@@ -50,6 +50,7 @@ def graficas(df,grupo):
         'text': f"Analizando Liderazgo",
         'font': {'size': 22, 'color': 'skyblue', 'family': 'Arial, sans-serif'},
         'x': 0.5,  # Centrar el título
+        'y': 0.95,  # Centrar el título
         'xanchor': 'center'
     },
     xaxis_title={
@@ -128,9 +129,11 @@ def description():
 
         .tabla {
             width: 100% !important;
+            padding-bottom: 5px !important;
         }
         @media (max-width: 600px) {
             .tabla {
+                padding-bottom: 5px !important;
                 width: 100%;
             }
         }

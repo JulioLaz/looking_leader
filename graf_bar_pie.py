@@ -73,6 +73,7 @@ def grafica_pie(df, grupo):
          'text': f"Distribución de Liderazgo",
          'font': {'size': 18, 'color': '#00ffff', 'family': 'Arial, sans-serif'},
          'x': 0.5,  # Centrar el título
+         'y': 0.9,  # Centrar el título
          'xanchor': 'center'
             },
          showlegend=False,
@@ -108,7 +109,7 @@ def graf_embudo(df):
          'text': f"Orden de Liderazgo",
          'font': {'size': 20, 'color': '#00ffff', 'family': 'Arial, sans-serif'},
          'x': 0.5,  # Centrar el título
-         'y':.96,
+         'y':.945,
          'xanchor': 'center'
             },
       plot_bgcolor='black',  # Dark background
