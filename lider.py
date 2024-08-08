@@ -98,11 +98,8 @@ if not st.session_state.authenticated:
 
     if st.button("Acceder"):
         if check_credentials(st.session_state.nombre, st.session_state.selected_group):
-      #   if check_credentials(nombre, grupo):
             st.session_state.authenticated = True
-            # st.session_state.group = grupo
             st.session_state.group = st.session_state.selected_group
-
             st.rerun()
         else:
             st.error(f"Nombre o grupo incorrecto.\nPor favor, verifica tus datos e intenta de nuevo.")
@@ -151,7 +148,8 @@ if st.session_state.authenticated:
    #root > div:nth-child(1) > div.withScreencast > div > div > div > section > div.block-container.st-emotion-cache-1jicfl2.ea3mdgi5 > div > div > div > div.st-emotion-cache-ocqkz7.e1f1d6gn5 > div:nth-child(2) > div > div > div > div > div > div:nth-child(1) > div{
                display: flex;
                justify-content: center;
-               }            
+               }
+           
                <style>''', unsafe_allow_html=True)
 
 

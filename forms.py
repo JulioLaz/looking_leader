@@ -8,7 +8,9 @@ def forms():
         border: 1px solid rgb(0, 255, 0);
         border-radius: 5px;
         padding: 10px 0;
-        width: 20rem">
+        width: 20rem;
+        background-color: #143417;
+        >
         <a href="https://docs.google.com/forms/d/e/1FAIpQLSdW37CVsihwoAQKNtrEmAiczfjGPEV_rqHVZ4t5WruJXJ7lPQ/viewform?usp=sf_link" target="_blank" style="text-decoration: none;">
             <div style='display: flex'>
                 <img style='padding:4px 0; width: 3rem' src="https://img.icons8.com/ios-filled/50/ffffff/google-forms.png" alt="Google Forms Icon" style="vertical-align: middle;"/>
