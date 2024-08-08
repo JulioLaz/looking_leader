@@ -2,9 +2,6 @@ import streamlit as st
 import plotly.graph_objects as go
 import plotly.express as px
 
-# columnas=['Nombre','Promedio_Tecnicas','Promedio_Blandas','Experiencia  [En Data Science]','Experiencia  [En liderar grupos]','Puntaje_Liderazgo','Grupo']
-
-
 def graficas(df,grupo):
     colors = px.colors.sequential.Inferno_r[:len(df)]
 
@@ -35,13 +32,12 @@ def graficas(df,grupo):
         marker=dict(
             size=(df['Experiencia  [En Data Science]'] + df['Experiencia  [En liderar grupos]']) * 2,
             color=df['Puntaje_Liderazgo'],
-            # colorscale=colors,
-            # colorscale='Inferno_r',
             colorscale='Viridis_r',
             colorbar=dict(title='Liderazgo'),
             line=dict(width=1, color='black')
         ),
         text=df['Nombre'],
+        textfont=dict(size=12, color='white'),
         textposition='bottom center',
         hoverinfo='text',
         hovertext=[f"{name}<br>Técnicas: {tech:.1f}<br>Blandas: {soft:.1f}<br>Liderazgo: {lead}"

@@ -12,11 +12,14 @@ st.set_page_config(page_title="Leadership Dashboard", page_icon=icon, layout="wi
 
 df = data.feature()
 
-# if 'authenticated' not in st.session_state:
-#     st.session_state.authenticated = False
-# if 'group' not in st.session_state:
-#     st.session_state.group = None
-# Initialize session state variables
+# st.markdown('''
+#     <style>
+# #root > div:nth-child(1) > div.withScreencast > div > div{
+#             background-color: red;
+#             }
+#     </style>
+#     ''', unsafe_allow_html=True)
+
 if 'authenticated' not in st.session_state:
     st.session_state.authenticated = False
 if 'group' not in st.session_state:
@@ -32,11 +35,14 @@ def check_credentials(nombre, grupo):
 
 if not st.session_state.authenticated:
     st.markdown(f"<h1 style='text-align: center;'>Bienvenido al clasificador de liderazgo</h1>", unsafe_allow_html=True)
-   #  nombre = st.text_input("Ingresa tu nombre:", type="default")
     st.session_state.nombre = st.text_input("Ingresa tu nombre:", value=st.session_state.nombre)
 
     st.markdown('''
     <style>
+   #root > div:nth-child(1) > div.withScreencast > div > div{
+            background-color: black;}
+                
+
     #root > div:nth-child(1) > div.withScreencast > div > div > div > section > div.block-container.st-emotion-cache-1jicfl2.ea3mdgi5 > div > div > div > div:nth-child(3),
     #root > div:nth-child(1) > div.withScreencast > div > div > div > section > div.block-container.st-emotion-cache-1jicfl2.ea3mdgi5 > div > div > div > div:nth-child(5) {
         display: flex;
@@ -82,7 +88,6 @@ if not st.session_state.authenticated:
     </style>
     ''', unsafe_allow_html=True)    
 
-   #  grupo = st.radio("Selecciona tu grupo:", df['Grupo'].sort_values(ascending=True).unique(), horizontal=True)
     st.session_state.selected_group = st.radio("Selecciona tu grupo:", df['Grupo'].sort_values(ascending=True).unique(), index=0 if st.session_state.selected_group is None else list(df['Grupo'].sort_values(ascending=True).unique()).index(st.session_state.selected_group), horizontal=True)
 
     st.markdown("""
@@ -180,6 +185,3 @@ if st.session_state.authenticated:
    with col2:
       st.markdown(f"<h3 style='text-align: center; color:#00ffff'>Tabla de resultados</h3>", unsafe_allow_html=True)
       g1.table_result(df)
-
-
-   # g1.comment_01()
