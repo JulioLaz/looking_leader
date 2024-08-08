@@ -12,14 +12,6 @@ st.set_page_config(page_title="Leadership Dashboard", page_icon=icon, layout="wi
 
 df = data.feature()
 
-# st.markdown('''
-#     <style>
-# #root > div:nth-child(1) > div.withScreencast > div > div{
-#             background-color: red;
-#             }
-#     </style>
-#     ''', unsafe_allow_html=True)
-
 if 'authenticated' not in st.session_state:
     st.session_state.authenticated = False
 if 'group' not in st.session_state:
@@ -39,10 +31,6 @@ if not st.session_state.authenticated:
 
     st.markdown('''
     <style>
-   #root > div:nth-child(1) > div.withScreencast > div > div{
-            background-color: black;}
-                
-
     #root > div:nth-child(1) > div.withScreencast > div > div > div > section > div.block-container.st-emotion-cache-1jicfl2.ea3mdgi5 > div > div > div > div:nth-child(3),
     #root > div:nth-child(1) > div.withScreencast > div > div > div > section > div.block-container.st-emotion-cache-1jicfl2.ea3mdgi5 > div > div > div > div:nth-child(5) {
         display: flex;
@@ -123,7 +111,6 @@ if not st.session_state.authenticated:
     forms.forms()            
 
 if st.session_state.authenticated:
-   # df_filtered = df[df['Grupo'] == st.session_state.group]
    df_filtered = df[df['Grupo'] == st.session_state.group]
 
    grupo = int(df_filtered.Grupo.unique()[0])
