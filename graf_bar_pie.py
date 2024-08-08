@@ -94,14 +94,13 @@ def graf_embudo(df):
       y = df_sorted['Nombre'],
       x = df_sorted['Puntaje_Liderazgo'],
       textposition = "inside",
-      textinfo = "label+value+percent total",
-      # textinfo = "label+value+percent initial",
-      textfont=dict(size=12, family='Arial Black'),
-
+      textinfo="none",
+      texttemplate="%{label}<br>Score: %{value}",
+      textfont=dict(size=14, family='Arial Black'),
       # opacity = 0.65,
-        marker = {"color": colors,
+      marker = {"color": colors,
                   "line": {"width": [1]*len(df), "color": ["white"]*len(df)}},
-      # connector = {"line": {"color": "royalblue", "dash": "solid", "width": 3}}
+      connector={"line": {"color": "gray", "width": 2}} 
    ))
 
    fig.update_layout(
@@ -112,11 +111,10 @@ def graf_embudo(df):
          'y':.96,
          'xanchor': 'center'
             },
-      # title_font=dict(size=24, color='skyblue'),
       plot_bgcolor='black',  # Dark background
       paper_bgcolor='black',  # Dark background
-      height=600,
-      margin=dict(l=0, r=0, t=50, b=0),
+      height=500,
+      margin=dict(l=0, r=0, t=50, b=20),
       yaxis=dict(
          showgrid=False,
          showline=False,
@@ -130,6 +128,4 @@ def graf_embudo(df):
       ),
       funnelmode="stack"
    )
-
-   # Display the chart in Streamlit
    st.plotly_chart(fig, use_container_width=True)

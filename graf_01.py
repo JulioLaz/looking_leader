@@ -71,13 +71,9 @@ def graficas(df,grupo):
     plot_bgcolor='black',  # Fondo del área de trazado
     margin=dict(t=80, b=80, l=80, r=80)
     )
-    
 
-    # Add lines at x=5 and y=5
     fig.add_shape(type="line", x0=5, y0=0, x1=5, y1=10, line=dict(color="red", width=1, dash="dash"))
     fig.add_shape(type="line", x0=0, y0=5, x1=10, y1=5, line=dict(color="red", width=1, dash="dash"))
-
-    # Update axes
     fig.update_xaxes(range=[0, 10], dtick=1)
     fig.update_yaxes(range=[0, 10], dtick=1)
     fig.update_xaxes(showgrid=True, gridwidth=1, gridcolor='lightgray')
@@ -85,82 +81,106 @@ def graficas(df,grupo):
 
     st.plotly_chart(fig, use_container_width=True)
 
-    # st.subheader("Datos:")
-def comment_00(df):
-    columnas=['Nombre','Promedio_Tecnicas','Promedio_Blandas','Puntaje_Liderazgo']
+def table_result(df):
+    columnas = ['Nombre', 'Promedio_Tecnicas', 'Promedio_Blandas', 'Puntaje_Liderazgo']
+    df = df[columnas]
+    html = '<table class="tabla">'
+    html += '<thead><tr>'
+    columnas_name = ['Nombre', 'hab. Técnicas', 'hab. Blandas', 'Score']
 
-    st.markdown('''<style>
-                #root > div:nth-child(1) > div.withScreencast > div > div > div > section > div.block-container.st-emotion-cache-1jicfl2.ea3mdgi5 > div > div > div > div:nth-child(7) > div{
-                display: flex;
-                justify-content:center;
-                margin:10px 0;
-                } </style>''', unsafe_allow_html=True)
-    df=df[columnas]
-    df.set_index('Nombre', inplace=True)
-    st.dataframe(df)
+    for col in columnas_name:
+        html += f'<th>{col}</th>'
+    html += '</tr></thead><tbody>'
 
+    for _, row in df.iterrows():
+        html += '<tr>'
+        for col in columnas:
+            html += f'<td>{row[col]}</td>'
+        html += '</tr>'
+    
+    html += '</tbody></table>'
+    st.markdown(html, unsafe_allow_html=True)    
 
-def comment_01():
+def description():
     st.markdown("""
                         <style>
+    #root > div:nth-child(1) > div.withScreencast > div > div > div > section > div.block-container.st-emotion-cache-1jicfl2.ea3mdgi5 > div > div > div > div:nth-child(5) > div:nth-child(2) > div > div > div > div:nth-child(2) > div{
+                display: flex;
+                justify-content: center;
+                margin: 0;
+                }
+    tr:nth-child(even) {
+                    background-color: #525252;
+                }
+    th {
+                background-color: #00ffff;
+                color: #000;
+                font-size: calc(10px + .5vw);
+                border: 1px solid white !important; 
+                text-align: center;
+                }
+    tbody tr:hover {
+                    background-color: #222;
+                }                
         td{
-                text-align: center;}
+                text-align: center;
+                font-size:1rem;
+                border: 1px solid white !important;
+                padding: 5px 0px !important;
+                font-size: calc(8px + .5vw);
+                }
+
         .tabla {
             width: 100% !important;
-            max-width: 600px;
-            # margin: auto;
-            margin-left:10px!important;
-                
         }
         @media (max-width: 600px) {
             .tabla {
-                height: 400px !important;
-                margin:10px !important;
+                width: 100%;
             }
         }
         </style>
 
 
-    <h4 style='display: flex; justify-content: center;'>Explicación de gráfica scatter</h4>
+    <h4 style='display: flex; justify-content: center; color: #00ffff;'>Explicación de gráfica scatter</h4>
     <div style='display: flex;flex-direction: row; flex-wrap: wrap; align-items: center; justify-content: center;'>
-    <table class='tabla' style="width:20vw; border-collapse: collapse;">
+    <table class='tabla' style="border-collapse: collapse; margin: 5px 10px">
       <tr style="background-color: #f2f2f2;">
-        <th style="font-size:1.3rem; border: 1px solid #ddd; padding: 8px; text-align: center;color:#000">Detalles del Gráfico</th>
+        <th>Detalles del Gráfico</th>
       </tr>
       <tr>
-         <td style="border: 1px solid #ddd; padding: 8px;"><strong>Eje X</strong>: Promedio de Habilidades Técnicas</td>
+         <td><strong>Eje X</strong>: Promedio de Habilidades Técnicas</td>
       </tr>
       <tr>
-        <td style="border: 1px solid #ddd; padding: 8px;"><strong>Eje Y</strong>: Promedio de Habilidades Blandas</td>
+        <td><strong>Eje Y</strong>: Promedio de Habilidades Blandas</td>
       </tr>
       <tr>
-        <td style="border: 1px solid #ddd; padding: 8px;"><strong>Tamaño de los puntos</strong>: Experiencia total</td>
+        <td><strong>Tamaño de los puntos</strong>: Experiencia total</td>
       </tr>
       <tr>
-        <td style="border: 1px solid #ddd; padding: 8px;"><strong>Color de los puntos</strong>: Puntaje de Liderazgo</td>
+        <td><strong>Color de los puntos</strong>: Puntaje de Liderazgo</td>
       </tr>
     </table>
                 
-    <table class='tabla' style="width:50vw; border-collapse: collapse; margin-left: 10px;">
+    <table class='tabla' style="border-collapse: collapse; margin: 0 10px">
       <tr style="background-color: #f2f2f2;">
-        <th style="font-size:1.3rem; border: 1px solid #ddd; padding: 8px; text-align: center;color:#000">Cuadrante</th>
-        <th style="font-size:1.3rem; border: 1px solid #ddd; padding: 8px; text-align: center;color:#000">Descripción</th>
+        <th>Cuadrante</th>
+        <th>Descripción</th>
       </tr>
       <tr>
-        <td style="border: 1px solid #ddd; padding: 8px;">Rojo</td>
-        <td style="border: 1px solid #ddd; padding: 8px;">Bajo rendimiento</td>
+        <td>Rojo</td>
+        <td>Bajo rendimiento</td>
       </tr>
       <tr>
-        <td style="border: 1px solid #ddd; padding: 8px;">Marrón (izquierda)</td>
-        <td style="border: 1px solid #ddd; padding: 8px;">Fuertes en habilidades blandas</td>
+        <td>Marrón (izquierda)</td>
+        <td>Fuertes en habilidades blandas</td>
       </tr>
       <tr>
-        <td style="border: 1px solid #ddd; padding: 8px;">Marrón (derecha)</td>
-        <td style="border: 1px solid #ddd; padding: 8px;">Fuertes en habilidades técnicas</td>
+        <td>Marrón (derecha)</td>
+        <td>Fuertes en habilidades técnicas</td>
       </tr>
       <tr>
-        <td style="border: 1px solid #ddd; padding: 8px;">Celeste</td>
-        <td style="border: 1px solid #ddd; padding: 8px;">Alto rendimiento</td>
+        <td>Celeste</td>
+        <td>Alto rendimiento</td>
       </tr>
     </table>
     <br>

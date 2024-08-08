@@ -167,12 +167,19 @@ if st.session_state.authenticated:
    with col1:
       g1.graficas(df,grupo)
    with col2:
-      tab1, tab2 = st.tabs(["Distribución puntos","Puntuación"])
+      tab1, tab2 = st.tabs(["Distribución puntos","Explicación de gráfica scatter"])
       with tab1: 
          bp.grafica_pie(df,grupo)
       with tab2:
-         bp.grafica_bar_00(df,grupo)
+         # bp.grafica_bar_00(df,grupo)
+         g1.description()
 
-   bp.graf_embudo(df)
-   g1.comment_01()
-   g1.comment_00(df)
+   col1, col2 = st.columns(2)
+   with col1:
+      bp.graf_embudo(df)
+   with col2:
+      st.markdown(f"<h3 style='text-align: center; color:#00ffff'>Tabla de resultados</h3>", unsafe_allow_html=True)
+      g1.table_result(df)
+
+
+   # g1.comment_01()
