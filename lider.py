@@ -72,7 +72,20 @@ if not st.session_state.authenticated:
 #root > div:nth-child(1) > div.withScreencast > div > div > div > section > div.block-container.st-emotion-cache-1jicfl2.ea3mdgi5 > div > div > div > div:nth-child(10) > div > div,                
 #root > div:nth-child(1) > div.withScreencast > div > div > div > section > div.block-container.st-emotion-cache-1jicfl2.ea3mdgi5 > div > div > div > div:nth-child(5) > div > div{
             display:flex !important;
-            justify-content: center !important}    
+            justify-content: center !important}
+                /*  hidden navbar initial */
+#root > div:nth-child(1) > div.withScreencast > div > div > header > div.st-emotion-cache-15ecox0.ezrtsby0{
+                display: none !important}    
+                }                
+#root > div:nth-child(1) > div.withScreencast > div > div > header{
+            display: none !important;
+            background:none !important;
+                } 
+
+
+                }                               
+#root > div:nth-child(1) > div.withScreencast > div > div > div > section > div.block-container.st-emotion-cache-1jicfl2.ea3mdgi5{
+padding-top: 0px !important}                
     </style>
     ''', unsafe_allow_html=True)    
 
