@@ -3,7 +3,8 @@ import requests
 import streamlit as st
 
 # https://docs.google.com/spreadsheets/d/1AoK3iyl88emnVbRJfrTjDhpIV47zmBCToGIW0tBuhHU/edit?usp=sharing
-@st.cache_data
+@st.cache_data(ttl=600)
+# @st.cache_data
 def load_data():
     gsheetid = '1AoK3iyl88emnVbRJfrTjDhpIV47zmBCToGIW0tBuhHU'
     sheetid = '700713393'
