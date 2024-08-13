@@ -1,5 +1,6 @@
 import streamlit as st
 
+    # <a href="https://docs.google.com/forms/d/e/1FAIpQLSdW37CVsihwoAQKNtrEmAiczfjGPEV_rqHVZ4t5WruJXJ7lPQ/viewform?usp=sf_link" target="_blank" style="
 def forms():
     html = """
     <div style="
@@ -10,7 +11,7 @@ def forms():
     padding: 10px 0;
     width: 20rem;
     background-color: #143417;">
-    <a href="https://docs.google.com/forms/d/e/1FAIpQLSdW37CVsihwoAQKNtrEmAiczfjGPEV_rqHVZ4t5WruJXJ7lPQ/viewform?usp=sf_link" target="_blank" style="
+    <a href="https://forms.gle/9dhuSWxhNLRTCfhJ6" target="_blank" style="
         display: block;
         text-decoration: none;
         color: #fff;

@@ -48,6 +48,7 @@ def grafica_pie(df, grupo):
     df = df.sort_values('Puntaje_Liderazgo', ascending=True)
     df = df[df['Grupo'] == grupo]
     norm = (df['Puntaje_Liderazgo'] - df['Puntaje_Liderazgo'].min()) / (df['Puntaje_Liderazgo'].max() - df['Puntaje_Liderazgo'].min())
+    norm = norm.fillna(norm.count() + norm.notna().cumsum())
     colors = [px.colors.sequential.Viridis_r[int(i * (len(px.colors.sequential.Inferno_r) - 1))] for i in norm]
     max_value_index = df['Puntaje_Liderazgo'].idxmax()
     pull_values = [0.1 if i == max_value_index else 0 for i in df.index]
@@ -87,6 +88,7 @@ def grafica_pie(df, grupo):
 
 def graf_embudo(df):
    norm = (df['Puntaje_Liderazgo'] - df['Puntaje_Liderazgo'].min()) / (df['Puntaje_Liderazgo'].max() - df['Puntaje_Liderazgo'].min())
+   norm = norm.fillna(norm.count() + norm.notna().cumsum())
    colors = [px.colors.sequential.Viridis_r[int(i * (len(px.colors.sequential.Inferno_r) - 1))] for i in norm]
 
    df_sorted = df.sort_values('Puntaje_Liderazgo', ascending=False)
