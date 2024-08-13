@@ -170,7 +170,8 @@ if st.session_state.authenticated:
     #root > div:nth-child(1) > div.withScreencast > div > div > div > section > div.block-container.st-emotion-cache-1jicfl2.ea3mdgi5 > div > div > div > div:nth-child(6) > div{
     display: flex;
     justify-content:end
-                }                
+                }
+             
                 <style>''', unsafe_allow_html=True)
 
 
@@ -196,11 +197,11 @@ if st.session_state.authenticated:
             st.markdown("### Recursos útiles Bootcamp-Xperience")
             links = [
                 {"name": "Web BX alumno", "url": "https://bootcampxperience.com/bootcamp-alumno"},
-                {"name": "LinkedIn", "url": "https://www.linkedin.com/company/bootcampxperience"},
-                {"name": "YouTube", "url": "https://www.youtube.com/@BootcampXperience"},
-                {"name": "GitHub", "url": "https://github.com/BootcampXperience"},
-                {"name": "WhatsApp", "url": "https://www.whatsapp.com/channel/0029VakultYHbFV2IaSQwm1J"},
-                {"name": "Discord", "url": "https://discord.com/channels/1142901240523669616/1143720307450978464"},
+                {"name": "LinkedIn BX", "url": "https://www.linkedin.com/company/bootcampxperience"},
+                {"name": "YouTube BX", "url": "https://www.youtube.com/@BootcampXperience"},
+                {"name": "GitHub BX", "url": "https://github.com/BootcampXperience"},
+                {"name": "WhatsApp BX", "url": "https://www.whatsapp.com/channel/0029VakultYHbFV2IaSQwm1J"},
+                {"name": "Discord BX", "url": "https://discord.com/channels/1142901240523669616/1143720307450978464"},
                 {"name": "Contactar a Julio en Discord", "url": "https://discord.com/users/992155311056097360"},
                 # Add more links as needed id usuario discord julio: Discordapp/user/992155311056097350
             ]

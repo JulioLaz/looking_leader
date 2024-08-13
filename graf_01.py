@@ -128,8 +128,9 @@ def description():
                 }
 
         .tabla {
-            width: 100% !important;
+            width: 96% !important;
             padding-bottom: 5px !important;
+            margin: 0px 2%;
         }
         @media (max-width: 600px) {
             .tabla {
@@ -141,7 +142,7 @@ def description():
 
 
     <h4 style='display: flex; justify-content: center; color: #00ffff;'>Explicación de gráfica scatter</h4>
-    <div style='display: flex;flex-direction: row; flex-wrap: wrap; align-items: center; justify-content: center;'>
+    <div style='display: flex;flex-direction: row; flex-wrap: wrap; align-items: center; justify-content: center'>
     <table class='tabla' style="border-collapse: collapse; margin: 5px 10px">
       <tr style="background-color: #f2f2f2;">
         <th>Detalles del Gráfico</th>
