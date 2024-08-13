@@ -74,12 +74,12 @@ def feature():
 
 columnas=['Nombre','Promedio_Tecnicas','Promedio_Blandas','Experiencia  [En Data Science]','Experiencia  [En liderar grupos]','Puntaje_Liderazgo','Grupo']
 
-if __name__ == "__main__":
-    df = load_data()
-    if not df.empty:
-        df_processed = feature()
-        print(df_processed.info())
-        print(df_processed.describe())
-        print(df_processed[columnas].head(2))
-    else:
-        print("No data to process.")
+# if __name__ == "__main__":
+#     df = load_data()
+#     if not df.empty:
+#         df_processed = feature()
+#         print(df_processed.info())
+#         print(df_processed.describe())
+#         print(df_processed[columnas].head(2))
+#     else:
+#         print("No data to process.")
