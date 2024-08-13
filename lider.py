@@ -77,6 +77,10 @@ if not st.session_state.authenticated:
 #root > div:nth-child(1) > div.withScreencast > div > div > header > div.st-emotion-cache-15ecox0.ezrtsby0{
                 display: none !important}    
                 }                
+#root > div:nth-child(1) > div.withScreencast > div > div > header > div.st-emotion-cache-15ecox0.ezrtsby0{
+            display: none !important;
+            background:none !important;
+                } 
 #root > div:nth-child(1) > div.withScreencast > div > div > header{
             display: none !important;
             background:none !important;
