@@ -27,7 +27,9 @@ def check_credentials(nombre, grupo):
     return not user_data.empty
 
 if not st.session_state.authenticated:
-    st.markdown(f"<h1 style='text-align: center;'>Bienvenido al clasificador de liderazgo</h1>", unsafe_allow_html=True)
+    st.markdown(f"<div style='display:flex;justify-content:center; flex-direction: column'><h1 style='text-align: center;'>Bienvenido al clasificador de liderazgo</h1><h5 style='width: 100%;padding: 0 2rem 2rem 2rem; word-wrap: break-word;text-align:center;color:gray'>Esto es una ayuda para definir al líder, en principio el de mayor score será el primer candidato y si acepta y tiene disponibilidad será el designado!</h5></div>", unsafe_allow_html=True)
+    # st.markdown(f"<h1 style='text-align: center;'>Bienvenido al clasificador de liderazgo</h1><h5>Esto una ayuda para definir al líder, en principio el de mayor score será el primer candidato y si acepta y tiene disponibilidad será el designado!</h5>", unsafe_allow_html=True)
+    # st.markdown(f"<h1 style='text-align: center;'>Bienvenido al clasificador de liderazgo</h1><h5 style='color: #ff00ff; font-style: italic; widht: 50vw'>Esto una ayuda para definir al líder, en principio el de mayor score será el primer candidato y si acepta y tiene disponibilidad será el designado!</h5>", unsafe_allow_html=True)
     st.session_state.nombre = st.text_input("Ingresa tu nombre, el del formulario:", value=st.session_state.nombre)
     st.markdown('''
     <style>
@@ -89,7 +91,11 @@ if not st.session_state.authenticated:
 
                 }                               
 #root > div:nth-child(1) > div.withScreencast > div > div > div > section > div.block-container.st-emotion-cache-1jicfl2.ea3mdgi5{
-padding-top: 0px !important}                
+padding-top: 0px !important} 
+
+                /* pg inicial   */
+    #root > div:nth-child(1) > div.withScreencast > div > div > div > section > div.block-container.st-emotion-cache-1jicfl2.ea3mdgi5{
+    padding:0 !important;}                             
     </style>
     ''', unsafe_allow_html=True)    
 
@@ -171,7 +177,12 @@ if st.session_state.authenticated:
     display: flex;
     justify-content:end
                 }
-             
+                /* hidden navbar streamlit */
+    #root > div:nth-child(1) > div.withScreencast > div > div > header{
+    display: none !important}                
+             /* pg de graf */
+    #root > div:nth-child(1) > div.withScreencast > div > div > div > section > div.block-container.st-emotion-cache-1jicfl2.ea3mdgi5{
+    padding: 0 !important}                
                 <style>''', unsafe_allow_html=True)
 
 
@@ -203,7 +214,6 @@ if st.session_state.authenticated:
                 {"name": "WhatsApp BX", "url": "https://www.whatsapp.com/channel/0029VakultYHbFV2IaSQwm1J"},
                 {"name": "Discord BX", "url": "https://discord.com/channels/1142901240523669616/1143720307450978464"},
                 {"name": "Contactar a Julio en Discord", "url": "https://discord.com/users/992155311056097360"},
-                # Add more links as needed id usuario discord julio: Discordapp/user/992155311056097350
             ]
             for link in links:
                 st.markdown(f"[{link['name']}]({link['url']})")
