@@ -175,14 +175,16 @@ if st.session_state.authenticated:
     /*  btn inicio */
     #root > div:nth-child(1) > div.withScreencast > div > div > div > section > div.block-container.st-emotion-cache-1jicfl2.ea3mdgi5 > div > div > div > div:nth-child(6) > div{
     display: flex;
-    justify-content:end
+    justify-content:center;
+    margin: 1rem;
                 }
                 /* hidden navbar streamlit */
     #root > div:nth-child(1) > div.withScreencast > div > div > header{
     display: none !important}                
              /* pg de graf */
     #root > div:nth-child(1) > div.withScreencast > div > div > div > section > div.block-container.st-emotion-cache-1jicfl2.ea3mdgi5{
-    padding: 0 !important}                
+    padding: 0 !important
+                }                
                 <style>''', unsafe_allow_html=True)
 
 
