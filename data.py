@@ -14,6 +14,7 @@ def load_data():
 
     try:
         df = pd.read_csv(url)
+        df = df.loc[df.Grupo != 0]
     except requests.exceptions.RequestException as e:
         print(f"Error fetching data from Google Sheets: {e}")
         return pd.DataFrame()  # Return an empty DataFrame if there's an error
