@@ -19,7 +19,6 @@ def text_input():
     #root > div:nth-child(1) > div.withScreencast > div > div > div > section > div.block-container.st-emotion-cache-1jicfl2.ea3mdgi5 > div > div > div > div:nth-child(3) > div,
     #root > div:nth-child(1) > div.withScreencast > div > div > div > section > div.block-container.st-emotion-cache-1jicfl2.ea3mdgi5 > div > div > div > div:nth-child(5) > div {
         width: 20rem !important;
-      #   display: flex;
     }
     /* Estilos para el input de texto */
     .stTextInput > div > div > input {
@@ -29,9 +28,11 @@ def text_input():
         border-radius: 5px;
         font-size: 16px;
     }
+                
     .stRadio > div > div > div {
             display:flex !important;
             justify-content: center !important}
+                
     .stButton > button {
         width: 20rem;
         padding: 10px;
@@ -42,18 +43,20 @@ def text_input():
         cursor: pointer;
         font-size: 16px;
     }
-                #root > div:nth-child(1) > div.withScreencast > div > div > div > section > div.block-container.st-emotion-cache-1jicfl2.ea3mdgi5 > div > div > div > div:nth-child(7) > div{
+                
+#root > div:nth-child(1) > div.withScreencast > div > div > div > section > div.block-container.st-emotion-cache-1jicfl2.ea3mdgi5 > div > div > div > div:nth-child(7) > div{
                display: flex;
                 justify-content: center;}
-    .stButton > button:hover {
-        background-color: #45a049;
-    }
-                /*  centrar link de forms  */
+
+    .stButton > button:hover {background-color: #45a049}
+                
+    /*  centrar link de forms  */
 #root > div:nth-child(1) > div.withScreencast > div > div > div > section > div.block-container.st-emotion-cache-1jicfl2.ea3mdgi5 > div > div > div > div:nth-child(10) > div > div,                
 #root > div:nth-child(1) > div.withScreencast > div > div > div > section > div.block-container.st-emotion-cache-1jicfl2.ea3mdgi5 > div > div > div > div:nth-child(5) > div > div{
             display:flex !important;
             justify-content: center !important}
-                /*  hidden navbar initial */
+                
+    /*  hidden navbar initial */
 #root > div:nth-child(1) > div.withScreencast > div > div > header > div.st-emotion-cache-15ecox0.ezrtsby0{
                 display: none !important}    
                 }                
@@ -65,34 +68,34 @@ def text_input():
             display: none !important;
             background:none !important;
                 } 
-
-
-                }                               
+                              
 #root > div:nth-child(1) > div.withScreencast > div > div > div > section > div.block-container.st-emotion-cache-1jicfl2.ea3mdgi5{
-padding-top: 0px !important} 
+padding-top: 0px !important
+} 
 
-                /* pg inicial   */
+    /* pg inicial   */
     #root > div:nth-child(1) > div.withScreencast > div > div > div > section > div.block-container.st-emotion-cache-1jicfl2.ea3mdgi5{
-    padding:0 !important;}                             
-/* input of the name */
+    padding:0 !important;}
+                                            
+    /* input of the name */
 #root > div:nth-child(1) > div.withScreencast > div > div > div > section > div.block-container.st-emotion-cache-z5fcl4.ea3mdgi5 > div > div > div > div:nth-child(3) > div{
-                width: min-content;}                
-/*inputs */
+    width: min-content;}
+                                
+    /*inputs */
 #root > div:nth-child(1) > div.withScreencast > div > div > div > section > div.block-container.st-emotion-cache-z5fcl4.ea3mdgi5 > div > div > div > div:nth-child(5) > div,
 #root > div:nth-child(1) > div.withScreencast > div > div > div > section > div.block-container.st-emotion-cache-z5fcl4.ea3mdgi5 > div > div > div > div:nth-child(7) > div,
 #root > div:nth-child(1) > div.withScreencast > div > div > div > section > div.block-container.st-emotion-cache-z5fcl4.ea3mdgi5 > div > div > div > div:nth-child(9) > div > div,                 
 #root > div:nth-child(1) > div.withScreencast > div > div > div > section > div.block-container.st-emotion-cache-z5fcl4.ea3mdgi5 > div > div > div > div:nth-child(3){
     display: flex;
-    justify-content: center;}                
-                
-/* padding general */
+    justify-content: center;}
+                             
+    /*padding general */
 #root > div:nth-child(1) > div.withScreencast > div > div > div > section > div.block-container.st-emotion-cache-z5fcl4.ea3mdgi5{
     width: 100%;
     padding: 1.5rem 1rem;
     min-width: auto;
     max-width: initial;}                                
-    </style>
-    ''', unsafe_allow_html=True)  
+    </style>''', unsafe_allow_html=True)  
    
 def graficas():
     st.markdown('''<style>
@@ -139,7 +142,7 @@ def graficas():
     display: flex;
     justify-content:center;
     margin-top:1rem;}                                       
-                <style>''', unsafe_allow_html=True)
+    <style>''', unsafe_allow_html=True)
     
 def radio():
         st.markdown("""
