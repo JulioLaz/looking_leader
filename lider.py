@@ -31,7 +31,7 @@ if not st.session_state.authenticated:
     st.session_state.nombre = st.text_input("Ingresa el nombre que pusiste en el formulario:", value=st.session_state.nombre)
     styles.text_input()
 
-    st.session_state.selected_group = st.radio("Selecciona tu grupo:", df['Grupo'].sort_values(ascending=True).unique(), index=0 if st.session_state.selected_group is None else list(df['Grupo'].sort_values(ascending=True).unique()).index(st.session_state.selected_group), horizontal=True)
+    st.session_state.selected_group = st.radio(f"Grupo:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;", df['Grupo'].sort_values(ascending=True).unique(), index=0 if st.session_state.selected_group is None else list(df['Grupo'].sort_values(ascending=True).unique()).index(st.session_state.selected_group), horizontal=True)
     # st.session_state.selected_group = st.radio(f"Grupo:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;", [1,2,3,4], index=0 if st.session_state.selected_group is None else list(df['Grupo'].sort_values(ascending=True).unique()).index(st.session_state.selected_group), horizontal=True)
     styles.radio()
 
