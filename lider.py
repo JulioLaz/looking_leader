@@ -30,7 +30,7 @@ if not st.session_state.authenticated:
     st.markdown(f"<div style='display:flex;justify-content:center; flex-direction: column'><h1 style='text-align: center;'>Bienvenido al clasificador de liderazgo</h1><h5 style='width: 100%;padding: 0 2rem 2rem 2rem; word-wrap: break-word;text-align:center;color:gray'>Esto es una ayuda para definir al líder, en principio el de mayor score será el primer candidato y si acepta y tiene disponibilidad será el designado!</h5></div>", unsafe_allow_html=True)
     # st.markdown(f"<h1 style='text-align: center;'>Bienvenido al clasificador de liderazgo</h1><h5>Esto una ayuda para definir al líder, en principio el de mayor score será el primer candidato y si acepta y tiene disponibilidad será el designado!</h5>", unsafe_allow_html=True)
     # st.markdown(f"<h1 style='text-align: center;'>Bienvenido al clasificador de liderazgo</h1><h5 style='color: #ff00ff; font-style: italic; widht: 50vw'>Esto una ayuda para definir al líder, en principio el de mayor score será el primer candidato y si acepta y tiene disponibilidad será el designado!</h5>", unsafe_allow_html=True)
-    st.session_state.nombre = st.text_input("Ingresa tu nombre, el del formulario:", value=st.session_state.nombre)
+    st.session_state.nombre = st.text_input("Ingresa el nombre que pusiste en el formulario:", value=st.session_state.nombre)
     st.markdown('''
     <style>
     #root > div:nth-child(1) > div.withScreencast > div > div > div > section > div.block-container.st-emotion-cache-1jicfl2.ea3mdgi5 > div > div > div > div:nth-child(3),
@@ -96,10 +96,28 @@ padding-top: 0px !important}
                 /* pg inicial   */
     #root > div:nth-child(1) > div.withScreencast > div > div > div > section > div.block-container.st-emotion-cache-1jicfl2.ea3mdgi5{
     padding:0 !important;}                             
+/* input of the name */
+#root > div:nth-child(1) > div.withScreencast > div > div > div > section > div.block-container.st-emotion-cache-z5fcl4.ea3mdgi5 > div > div > div > div:nth-child(3) > div{
+                width: min-content;}                
+/*inputs */
+#root > div:nth-child(1) > div.withScreencast > div > div > div > section > div.block-container.st-emotion-cache-z5fcl4.ea3mdgi5 > div > div > div > div:nth-child(5) > div,
+#root > div:nth-child(1) > div.withScreencast > div > div > div > section > div.block-container.st-emotion-cache-z5fcl4.ea3mdgi5 > div > div > div > div:nth-child(7) > div,
+#root > div:nth-child(1) > div.withScreencast > div > div > div > section > div.block-container.st-emotion-cache-z5fcl4.ea3mdgi5 > div > div > div > div:nth-child(9) > div > div,                 
+#root > div:nth-child(1) > div.withScreencast > div > div > div > section > div.block-container.st-emotion-cache-z5fcl4.ea3mdgi5 > div > div > div > div:nth-child(3){
+    display: flex;
+    justify-content: center;}                
+                
+/* padding general */
+#root > div:nth-child(1) > div.withScreencast > div > div > div > section > div.block-container.st-emotion-cache-z5fcl4.ea3mdgi5{
+    width: 100%;
+    padding: 1.5rem 1rem;
+    min-width: auto;
+    max-width: initial;}                                
     </style>
     ''', unsafe_allow_html=True)    
 
-    st.session_state.selected_group = st.radio("Selecciona tu grupo:", df['Grupo'].sort_values(ascending=True).unique(), index=0 if st.session_state.selected_group is None else list(df['Grupo'].sort_values(ascending=True).unique()).index(st.session_state.selected_group), horizontal=True)
+    # st.session_state.selected_group = st.radio("Selecciona tu grupo:", df['Grupo'].sort_values(ascending=True).unique(), index=0 if st.session_state.selected_group is None else list(df['Grupo'].sort_values(ascending=True).unique()).index(st.session_state.selected_group), horizontal=True)
+    st.session_state.selected_group = st.radio(f"Grupo:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;", [1,2,3,4], index=0 if st.session_state.selected_group is None else list(df['Grupo'].sort_values(ascending=True).unique()).index(st.session_state.selected_group), horizontal=True)
 
     st.markdown("""
     <style>

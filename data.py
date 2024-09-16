@@ -6,8 +6,12 @@ import streamlit as st
 @st.cache_data(ttl=60)
 # @st.cache_data
 def load_data():
-    gsheetid = '1AoK3iyl88emnVbRJfrTjDhpIV47zmBCToGIW0tBuhHU'
-    sheetid = '700713393'
+    gsheetid = '14wW4aHHaOGjKvZXS0NAJAC14Urct5gwAASIfxrJm0l0' # mes de septiembre
+    sheetid = '1233241675' # mes de septiembre
+
+    # gsheetid = '1AoK3iyl88emnVbRJfrTjDhpIV47zmBCToGIW0tBuhHU' # mes de agosto
+    # sheetid = '700713393' # mes de agosto
+
     # gsheetid = '1xoqR5jZa99UmIZ1nQxb7T_t29bsEO35F08yIinl-4Xo' # mes de julio
     # sheetid = '651754447' # mes de julio
     url = f'https://docs.google.com/spreadsheets/d/{gsheetid}/export?format=csv&gid={sheetid}'
