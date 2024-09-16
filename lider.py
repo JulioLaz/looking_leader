@@ -30,8 +30,11 @@ if not st.session_state.authenticated:
     st.markdown(f"<div style='display:flex;justify-content:center; flex-direction: column'><h1 style='text-align: center;'>Bienvenido al clasificador de liderazgo</h1><h5 style='width: 100%;padding: 0 2rem 2rem 2rem; word-wrap: break-word;text-align:center;color:gray'>Esto es una ayuda para definir al líder, en principio el de mayor score será el primer candidato y si acepta y tiene disponibilidad será el designado!</h5></div>", unsafe_allow_html=True)
     st.session_state.nombre = st.text_input("Ingresa el nombre que pusiste en el formulario:", value=st.session_state.nombre)
     styles.text_input()
+    grupos_disponibles = list(df['Grupo'].sort_values(ascending=True).unique())
 
-    st.session_state.selected_group = st.radio(f"Grupo:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;", df['Grupo'].sort_values(ascending=True).unique(), index=0 if st.session_state.selected_group is None else list(df['Grupo'].sort_values(ascending=True).unique()).index(st.session_state.selected_group), horizontal=True)
+    if grupos_disponibles:
+        st.session_state.selected_group = st.radio(f"Grupo:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;", df['Grupo'].sort_values(ascending=True).unique(), index=0 if st.session_state.selected_group is None else list(df['Grupo'].sort_values(ascending=True).unique()).index(st.session_state.selected_group), horizontal=True)
+    else: st.info('Aún ningún miembro llenó el formulario!')
     # st.session_state.selected_group = st.radio(f"Grupo:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;", [1,2,3,4], index=0 if st.session_state.selected_group is None else list(df['Grupo'].sort_values(ascending=True).unique()).index(st.session_state.selected_group), horizontal=True)
     styles.radio()
 
