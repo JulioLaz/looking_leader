@@ -12,6 +12,8 @@ def graficas(df,grupo):
         {'x': [0, 5, 5, 0], 'y': [5, 5, 10, 10], 'fillcolor': 'rgba(246, 200, 15, 0.7)', 'name': 'Habilidades blandas fuertes'},
         {'x': [5, 10, 10, 5], 'y': [0, 0, 5, 5], 'fillcolor': 'rgba(246, 200, 15, 0.7)', 'name': 'Habilidades técnicas fuertes'},
         {'x': [5, 10, 10, 5], 'y': [5, 5, 10, 10], 'fillcolor': 'rgba(00, 255, 255, 0.6)', 'name': 'Alto rendimiento'},
+        {'x': [0, 11, 11, 0], 'y': [10, 10, 11, 11], 'fillcolor': 'rgba(156, 156, 156, 0.6)', 'name': 'Alto rendimiento'},
+        {'x': [10, 11, 11, 10], 'y': [0, 0, 10, 10], 'fillcolor': 'rgba(156, 156, 156, 0.6)', 'name': 'Alto rendimiento'},
     ]
 
     for quadrant in quadrants:
@@ -71,8 +73,8 @@ def graficas(df,grupo):
 
     fig.add_shape(type="line", x0=5, y0=0, x1=5, y1=10, line=dict(color="red", width=1, dash="dash"))
     fig.add_shape(type="line", x0=0, y0=5, x1=10, y1=5, line=dict(color="red", width=1, dash="dash"))
-    fig.update_xaxes(range=[0, 10], dtick=1)
-    fig.update_yaxes(range=[0, 10], dtick=1)
+    fig.update_xaxes(range=[0, 11], dtick=1)
+    fig.update_yaxes(range=[0, 11], dtick=1)
     fig.update_xaxes(showgrid=True, gridwidth=1, gridcolor='lightgray')
     fig.update_yaxes(showgrid=True, gridwidth=1, gridcolor='lightgray')
 
